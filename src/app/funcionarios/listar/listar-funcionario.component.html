@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <span class="h3"> Lista de Funcionarios</span>
+      <button class="btn btn-dark btn-lg float-end" [routerLink]="['/funcionarios/cadastrar']">Inserir</button>
+      <h5 class="mt-5 text-center" *ngIf="funcionarios.length == 0">Não existe Funcionários Cadastrados</h5>
+      <table *ngIf="funcionarios.length > 0" class="table table-striped mt-5">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Salario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let funcionario of funcionarios">
+            <td>{{funcionario.nome}}</td>
+            <td>{{funcionario.cpf}}</td>
+            <td>{{funcionario.email}}</td>
+            <td>{{funcionario.salario |currency}}</td>
+            <td>
+              <i class="fas fa-edit fa-lg text-info me-2" [routerLink]="['/funcionarios/editar/', funcionario.id]"></i>
+              <i (click)="remover(funcionario.id)" class="fas fa-trash-alt fa-lg text-danger "></i>
+            </td>
+          </tr>
+         </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+
+</div>

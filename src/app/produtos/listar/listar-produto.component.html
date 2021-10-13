@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <span class="h3"> Lista de Produto</span>
+      <button class="btn btn-dark btn-lg float-end" [routerLink]="['/produtos/cadastrar']">Inserir</button>
+      <h5 class="mt-5 text-center" *ngIf="produtos.length == 0">Não existe Produtos Cadastrados</h5>
+      <table *ngIf="produtos.length > 0" class="table table-striped mt-5">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Codigo Barrras</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos">
+            <td>{{produto.nome}}</td>
+            <td>{{produto.codBarras}}</td>
+            <td>{{produto.quantidade}}</td>
+            <td>{{produto.preco |currency}}</td>
+            <td>
+              <i class="fas fa-edit fa-lg text-info me-2" [routerLink]="['/produtos/editar/', produto.id]"></i>
+              <i (click)="remover(produto.id)" class="fas fa-trash-alt fa-lg text-danger "></i>
+            </td>
+          </tr>
+         </tbody>
+      </table>
+    </div>
+  </div>
+</div>

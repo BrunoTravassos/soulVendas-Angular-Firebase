@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <span class="h3"> Lista de Clientes</span>
+      <button class="btn btn-dark btn-lg float-end" [routerLink]="['/clientes/cadastrar']">Inserir</button>
+      <h5 class="mt-5 text-center" *ngIf="clientes.length == 0">Não existem Clientes Cadastrados</h5>
+      <table *ngIf="clientes.length > 0" class="table table-striped mt-5">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.telefone}}</td>
+            <td>
+              <i class="fas fa-edit fa-lg text-info me-2" [routerLink]="['/clientes/editar/', cliente.id]"></i>
+              <i (click)="remover(cliente.id)" class="fas fa-trash-alt fa-lg text-danger "></i>
+            </td>
+          </tr>
+         </tbody>
+      </table>
+    </div>
+  </div>
+</div>
